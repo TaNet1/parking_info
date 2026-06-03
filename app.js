@@ -99,6 +99,7 @@
     body.innerHTML = MarkdownLite.render(tab.markdown || '');
     md.appendChild(body);
     el.content.appendChild(md);
+    enableVDragScroll(md); // 鼠标按住拖拽即可垂直滚动（触屏天然支持）
 
     // 海报区（仅当有海报时，与 markdown 平分）
     if (hasPoster) {
@@ -249,6 +250,34 @@
       document.addEventListener('mousemove', mm);
       document.addEventListener('mouseup', mu);
     });
+  }
+
+  // —— Markdown 区鼠标按住拖拽垂直滚动（触屏由原生 overflow 处理）——
+  function enableVDragScroll(box) {
+    var down = false, moved = false, startY = 0, startTop = 0;
+    box.addEventListener('mousedown', function (e) {
+      if (e.button !== 0) return;
+      down = true; moved = false;
+      startY = e.clientY; startTop = box.scrollTop;
+      function mm(ev) {
+        if (!down) return;
+        var dy = ev.clientY - startY;
+        if (Math.abs(dy) > 3) { moved = true; box.classList.add('grabbing'); }
+        box.scrollTop = startTop - dy;
+      }
+      function mu() {
+        down = false;
+        box.classList.remove('grabbing');
+        document.removeEventListener('mousemove', mm);
+        document.removeEventListener('mouseup', mu);
+      }
+      document.addEventListener('mousemove', mm);
+      document.addEventListener('mouseup', mu);
+    });
+    // 拖拽过程中抑制误触发链接点击
+    box.addEventListener('click', function (e) {
+      if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; }
+    }, true);
   }
 
   // —— Tab 栏鼠标拖拽横向滚动（触屏天然支持）——

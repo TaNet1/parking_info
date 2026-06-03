@@ -187,7 +187,9 @@ body {
   touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+  cursor: grab;
 }
+.md-area.grabbing { cursor: grabbing; }
 .md-area::-webkit-scrollbar { width: 7px; }
 .md-area::-webkit-scrollbar-thumb { background: var(--primary-soft-2); border-radius: 4px; }
 .md-area::-webkit-scrollbar-track { background: transparent; }
