@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>泊车资讯</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 整体组件 1024 x 980 -->
+  <div class="app">
+    <!-- 左侧区域 716 x 980 -->
+    <section class="panel-left">
+      <!-- 顶部：场地选择器（右上角） -->
+      <header class="left-header">
+        <div class="venue-selector" id="venueSelector">
+          <button class="venue-btn" id="venueBtn" type="button">
+            <span class="venue-name" id="venueName">奥海城二期</span>
+            <svg class="caret" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <ul class="venue-dropdown" id="venueDropdown" role="listbox"></ul>
+        </div>
+      </header>
+
+      <!-- Tab 栏（横向可滑动） -->
+      <nav class="tabs-bar" id="tabsBar" aria-label="资讯分类"></nav>
+
+      <!-- 内容区：markdown + 海报 -->
+      <div class="content" id="content"></div>
+    </section>
+
+    <!-- 右侧区域 308 x 980（写死） -->
+    <aside class="panel-right">
+      <div class="right-top">
+        <div class="brand-card active">
+          <svg class="brand-icon" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 17V7h3.4a3 3 0 0 1 0 6H9" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>泊车资讯</span>
+        </div>
+      </div>
+
+      <div class="right-bottom">
+        <button class="side-btn primary" type="button">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M4 5a2 2 0 0 1 2-2h2l2 4-2 1.5a11 11 0 0 0 5 5L16.5 11l4 2v2a2 2 0 0 1-2 2A14 14 0 0 1 4 5z"
+                  fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+          <span>客服热线</span>
+        </button>
+        <button class="side-btn primary" type="button">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M3.5 6.5L12 12l8.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span>意见反馈</span>
+        </button>
+        <button class="side-btn outline" type="button">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+          <span>简体中文 1L</span>
+        </button>
+        <button class="side-btn primary" type="button">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <circle cx="12" cy="4.2" r="1.8" fill="currentColor"/>
+            <path d="M5 8h14M12 8v5m0 0l-3.5 6M12 13l3.5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <span>无障碍模式</span>
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="markdown.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

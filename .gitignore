@@ -1,0 +1,7 @@
+# OS / editor
+Thumbs.db
+.DS_Store
+*.log
+
+# Dependencies (none used, kept for safety)
+node_modules/
